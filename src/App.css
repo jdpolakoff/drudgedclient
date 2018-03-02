@@ -93,4 +93,7 @@
     flex-wrap: nowrap;
     align-items: center
   }
+  .drudgedReport {
+    font-size: 70px
+  }
 }

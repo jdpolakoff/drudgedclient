@@ -40,10 +40,18 @@ class App extends Component {
     axios.get('https://drudged.herokuapp.com/api')
       .then((response)=> {
         var stories = response.data.filter((story, index)=>{
+          if (story.linkText === 'GET IT ON THE GO: DRUDGE MOBILE...' || story.linkText === 'BE SEEN!   RUN ADS ON DRUDGE REPORT...'
+          || story.linkText === 'PRIVACY POLICY...' || story.linkText === 'EMAIL: DRUDGE@DRUDGEREPORT.COM' || story.linkTex === 'DRUDGE REFERENCE DESK'
+          || story.linkText === 'RECENT DRUDGE HEADLINES...' || story.linkText === 'HELLO!' || story.linkText === 'E!' || story.linkText === 'CNN: RELIABLE SOURCES'){
+            return
+          }
           if (index < 10){
             return story.linkHref !== 'http://www.drudgereport.com/'
           }
-          if (index > 20){
+          if (index > 10 && story.linkText.includes('DRUDGE') === false && story.linkText.includes('PRIVACY POLIC') === false && story.linkText.includes('. . .') === true || story.linkText.includes('!') || story.linkText.split(' ').length > 3) {
+            return story
+          }
+          if (index > 10 && story.linkText.includes('...') !== true) {
             return story.linkText !== story.linkText.toUpperCase()
           }
         })
@@ -57,6 +65,8 @@ class App extends Component {
             var cleanURL = story.linkHref.replace('http://', '').split('/')[0]
           } else if (story.linkHref.includes('https://')){
             var cleanURL = story.linkHref.replace('https://', '').split('/')[0]
+          } else {
+            return
           }
           story['cleanURL'] = cleanURL
           story['count'] = 1
@@ -70,15 +80,13 @@ class App extends Component {
             outlet: outlet,
             stories: [],
             compareURL: outlet.split('.')[0]
-
           }
-
         })
         storyArray.forEach((outlet)=>{
           stories.forEach((story)=>{
-            if (story.cleanURL === outlet.outlet) {
-              outlet.stories.push(story)
-            }
+              if (story.cleanURL === outlet.outlet) {
+                outlet.stories.push(story)
+              }
           })
         })
         function compare(a, b){
@@ -94,32 +102,31 @@ class App extends Component {
         this.setState({ stories: storyArray }, ()=> {
           console.log(this.state.stories)
           var storyDiv = this.state.stories.map((story)=>{
-            console.log(story.compareURL)
-            if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
-              return (
-                <div>
+              if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
+                return (
+                  <div>
                   <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
-                </div>
-              )
-            } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1){
-              return (
-                <div>
+                  </div>
+                )
+              } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1){
+                return (
+                  <div>
                   <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
-                </div>
-              )
-            } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
-              return (
-                <div>
-                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge *</p>
-                </div>
-              )
-            } else if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
-              return (
-                <div>
-                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge *</p>
-                </div>
-              )
-            }
+                  </div>
+                )
+              } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge *</p>
+                  </div>
+                )
+              } else if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge *</p>
+                  </div>
+                )
+              }
           })
           this.setState({ storyDiv: storyDiv })
         })
