@@ -34,7 +34,20 @@
   font-size: 16px;
   font-weight: bold;
   font-style: italic;
-  text-decoration: underline line-through;
+  text-decoration: underline;
+}
+
+.crossedOut:hover {
+  cursor: pointer
+}
+
+.disclaimer {
+  color: red;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center
 }
 
 .linkContain {
@@ -43,7 +56,7 @@
 
 .drudgeLink {
   font-family: monospace;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   font-style: italic;
   text-decoration: underline;
@@ -58,9 +71,10 @@
   font-size: 100px;
   font-family: Impact;
   font-style: italic;
-  margin-top: -20px;
+  margin-top: -15px;
   margin-bottom: -1px;
-  text-shadow: -7px 0px #BFBFBF
+  text-shadow: -7px 0px #BFBFBF;
+  text-align: center
 }
 
 .img {

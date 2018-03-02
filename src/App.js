@@ -142,12 +142,21 @@ class App extends Component {
                 </div>
               )
             })
-            return (
-              <div>
-              <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge * ▲</p>
-              {storiez}
-              </div>
-            )
+            if (story.stories.length === 1){
+              return (
+                <div>
+                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge * ▲</p>
+                {storiez}
+                </div>
+              )
+            } else {
+              return (
+                <div>
+                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge * ▲</p>
+                {storiez}
+                </div>
+              )
+            }
           }
         } else {
           if (clicked.split(':')[0] !== story.outlet && story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
@@ -173,17 +182,32 @@ class App extends Component {
               </div>
             )
           })
-          return (
-            <div>
+          if (story.stories.length === 1){
+            return (
+              <div>
+              <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge ▲</p>
+              {storiez}
+              </div>
+            )
+          } else {
+            return (
+              <div>
               <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge ▲</p>
               {storiez}
-            </div>
-          )
+              </div>
+            )
+          }
         }
-       if (story.outlet !== clicked.split(':')[0] && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
+       if (story.outlet !== clicked.split(':')[0] && story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
           return (
             <div>
-              <p className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge</p>
+              <p className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge *</p>
+            </div>
+          )
+        } else if (story.outlet !== clicked.split(':')[0] && story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
+          return (
+            <div>
+              <p className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge *</p>
             </div>
           )
         } else {
@@ -207,6 +231,7 @@ class App extends Component {
         <img className="img" src={drudge} />
         </div>
         <h1 className="headline">{"WHO'S ON DRUDGE?"}</h1>
+        <p className="disclaimer">* Stories in red font are from sources deemed "questionable" or "conspiracy-psuedoscience" by <a className="disclaimer" href="https://mediabiasfactcheck.com/">Media Bias/Fact Check</a></p>
         <div className="imgContain">
         <h1 className="drudgedReport">THE DRUDGED REPORT</h1>
         </div>
