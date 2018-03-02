@@ -48,7 +48,7 @@ class App extends Component {
           if (index < 10){
             return story.linkHref !== 'http://www.drudgereport.com/'
           }
-          if (index > 10 && story.linkText.includes('DRUDGE') === false && story.linkText.includes('PRIVACY POLIC') === false && story.linkText.includes('. . .') === true || story.linkText.includes('!') || story.linkText.split(' ').length > 3) {
+          if (index > 10 && story.linkText.includes('...') === true || story.linkText.includes('!')) {
             return story
           }
           if (index > 10 && story.linkText.includes('...') !== true) {
