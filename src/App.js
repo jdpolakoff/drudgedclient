@@ -40,9 +40,9 @@ class App extends Component {
     axios.get('https://drudged.herokuapp.com/api')
       .then((response)=> {
         var stories = response.data.filter((story, index)=>{
-          if (story.linkText === 'GET IT ON THE GO: DRUDGE MOBILE...' || story.linkText === 'BE SEEN!   RUN ADS ON DRUDGE REPORT...'
-          || story.linkText === 'PRIVACY POLICY...' || story.linkText === 'EMAIL: DRUDGE@DRUDGEREPORT.COM' || story.linkTex === 'DRUDGE REFERENCE DESK'
-          || story.linkText === 'RECENT DRUDGE HEADLINES...' || story.linkText === 'HELLO!' || story.linkText === 'E!' || story.linkText === 'CNN: RELIABLE SOURCES'){
+          if (story.linkText === 'CNN:  RELIABLE SOURCES' || story.linkText === 'GET IT ON THE GO: DRUDGE MOBILE...' || story.linkText === 'BE SEEN!   RUN ADS ON DRUDGE REPORT...'
+          || story.linkText === 'PRIVACY POLICY...' || story.linkText === 'EMAIL: DRUDGE@DRUDGEREPORT.COM' || story.linkText === 'DRUDGE REFERENCE DESK'
+          || story.linkText === 'RECENT DRUDGE HEADLINES...' || story.linkText === 'HELLO!' || story.linkText === 'E!'){
             return
           }
           if (index < 10){
