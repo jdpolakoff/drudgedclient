@@ -303,6 +303,7 @@ class App extends Component {
       <div className="App">
         <div className="imgContain">
         <img className="img" src={drudge} />
+        <p className="questionMark">?</p>
         </div>
         <h1 className="headline">{"WHO'S ON DRUDGE?"}</h1>
         <p className="disclaimer">* Stories in red font are from sources deemed "questionable" or "conspiracy-psuedoscience" by <a className="disclaimer" href="https://mediabiasfactcheck.com/">Media Bias/Fact Check</a></p>

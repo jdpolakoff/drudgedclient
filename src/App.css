@@ -74,6 +74,19 @@
   text-align: center
 }
 
+.questionMark {
+  font-size: 150px;
+  font-family: Impact;
+  font-style: italic;
+  margin-top: -15px;
+  margin-bottom: -1px;
+  text-shadow: -7px 0px #BFBFBF;
+  text-align: center;
+  position: absolute;
+  left: 45%;
+  top: 5%;
+}
+
 .img {
   max-height: 200px;
 }
@@ -94,6 +107,13 @@
   flex-direction: row;
   justify-content: center
 }
+
+@media only screen and (max-width: 1200px) {
+  .questionMark {
+    display: none
+  }
+}
+
 
 @media only screen and (max-width: 800px) {
   .contain {
