@@ -97,25 +97,25 @@ class App extends Component {
             var storyDiv = this.state.stories.map((story)=>{
               if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1){
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
@@ -151,14 +151,14 @@ class App extends Component {
                   })
                   if (story.stories.length === 1){
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       {storiez}
                       </div>
                     )
                   } else {
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       {storiez}
                       </div>
@@ -174,14 +174,14 @@ class App extends Component {
                   })
                   if (story.stories.length === 1){
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       {storiez}
                       </div>
                     )
                   } else {
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       {storiez}
                       </div>
@@ -190,13 +190,13 @@ class App extends Component {
                 } else if (clicked.split(':')[0] !== story.outlet && this.state.compareText.indexOf(story.outlet) === -1) {
                   if (story.stories.length === 1){
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       </div>
                     )
                   } else {
                     return (
-                      <div>
+                      <div className="item">
                       <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       </div>
                     )
@@ -225,13 +225,13 @@ class App extends Component {
 
               if (story.stories.length === 1){
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else {
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
@@ -248,14 +248,14 @@ class App extends Component {
                 })
                 if (story.stories.length === 1){
                   return (
-                    <div>
+                    <div className="item">
                     <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                     {storiez}
                     </div>
                   )
                 } else {
                   return (
-                    <div>
+                    <div className="item">
                     <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                     {storiez}
                     </div>
@@ -266,13 +266,13 @@ class App extends Component {
 
               if (story.stories.length === 1){
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else {
                 return (
-                  <div>
+                  <div className="item">
                   <p style={{color: story.fontColor}} onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
