@@ -10,9 +10,12 @@ class App extends Component {
       stories: [],
       showStories: false,
       questionableSources: [],
-      conspiracySites: []
+      conspiracySites: [],
+      openTabs: [],
+      compareText: []
     }
   }
+
 
 
   componentDidMount(){
@@ -102,13 +105,13 @@ class App extends Component {
               } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
                 return (
                   <div>
-                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge *</p>
+                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
                 return (
                   <div>
-                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge *</p>
+                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               }
@@ -118,102 +121,167 @@ class App extends Component {
       })
     }
 
+
   showStories = (e) => {
+    this.setState({ showStories: true })
     const clicked = e.currentTarget.textContent
 
-    this.setState({ showStories: !this.state.showStories }, ()=> {
-      var storyDiv = this.state.stories.map((story)=>{
+    if (this.state.openTabs.indexOf(clicked) === -1) {
+      this.setState({ openTabs: [...this.state.openTabs, clicked] }, ()=> {
+        console.log(this.state.openTabs)
 
-        if (clicked.split(':')[0] === story.outlet){
-          if (this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
-            console.log('hello')
-            var storiez = story.stories.map((story)=>{
-              return (
-                <div className="linkContain">
-                <a className="crossedOut" target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
-                </div>
-              )
+        this.setState({ compareText: [...this.state.compareText, clicked.split(':')[0]] }, ()=> {
+
+            var storyDiv = this.state.stories.map((story)=>{
+
+              if (clicked.split(':')[0] === story.outlet && this.state.compareText.indexOf(story.outlet) !== -1) {
+
+                var storiez = story.stories.map((story)=>{
+                    return (
+                      <div className="linkContain">
+                      <a className="drudged" target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                      </div>
+                    )
+                  })
+                  if (story.stories.length === 1){
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      {storiez}
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      {storiez}
+                      </div>
+                    )
+                  }
+              } else if (clicked.split(':')[0] !== story.outlet && this.state.compareText.indexOf(story.outlet) !== -1) {
+                var storiez = story.stories.map((story)=>{
+                    return (
+                      <div className="linkContain">
+                      <a className="drudged" target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                      </div>
+                    )
+                  })
+                  if (story.stories.length === 1){
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      {storiez}
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      {storiez}
+                      </div>
+                    )
+                  }
+                } else if (clicked.split(':')[0] !== story.outlet && this.state.compareText.indexOf(story.outlet) === -1) {
+                  if (story.stories.length === 1){
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      </div>
+                    )
+                  } else {
+                    return (
+                      <div>
+                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      </div>
+                    )
+                  }
+                }
             })
-            if (story.stories.length === 1){
-              return (
-                <div>
-                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge * ▲</p>
-                {storiez}
-                </div>
-              )
-            } else {
-              return (
-                <div>
-                <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge * ▲</p>
-                {storiez}
-                </div>
-              )
-            }
-          }
-        } else {
-          if (clicked.split(':')[0] !== story.outlet && story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
-            return (
-              <div>
-              <p className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
-              </div>
-            )
-          } else if (clicked.split(':')[0] !== story.outlet && story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
-            return (
-              <div>
-              <p className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
-              </div>
-            )
-          }
-        }
-
-        if (this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1 && clicked.split(':')[0] === story.outlet) {
-          var storiez = story.stories.map((story)=>{
-            return (
-              <div className="linkContain">
-                <a className="drudgeLink" target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
-              </div>
-            )
-          })
-          if (story.stories.length === 1){
-            return (
-              <div>
-              <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge ▲</p>
-              {storiez}
-              </div>
-            )
-          } else {
-            return (
-              <div>
-              <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge ▲</p>
-              {storiez}
-              </div>
-            )
-          }
-        }
-       if (story.outlet !== clicked.split(':')[0] && story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
-          return (
-            <div>
-              <p className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge *</p>
-            </div>
-          )
-        } else if (story.outlet !== clicked.split(':')[0] && story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
-          return (
-            <div>
-              <p className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge *</p>
-            </div>
-          )
-        } else {
-          return (
-            <div>
-              <p className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
-            </div>
-          )
-        }
-
+          this.setState({ expandedStoryDiv: storyDiv })
+        })
       })
-      this.setState({ expandedStoryDiv: storyDiv })
-    })
-   }
+    }
+
+    if (this.state.openTabs.indexOf(clicked) !== -1) {
+
+      this.setState({ openTabs: this.state.openTabs.filter((item) => {
+         return item !== clicked
+         })
+       }, ()=> {
+         console.log(this.state.openTabs)
+         this.setState({ compareText: this.state.openTabs.map((tab)=>{
+           return tab.split(':')[0]
+         }) }, ()=> {
+
+           var storyDiv = this.state.stories.map((story)=>{
+
+            if (clicked.split(':')[0] === story.outlet && this.state.compareText.indexOf(story.outlet) === -1) {
+
+              if (story.stories.length === 1){
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  </div>
+                )
+              } else {
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  </div>
+                )
+              }
+
+            } else if (clicked.split(':')[0] !== story.outlet && this.state.compareText.indexOf(story.outlet) !== -1) {
+
+              var storiez = story.stories.map((story)=>{
+                  return (
+                    <div className="linkContain">
+                    <a className="drudged" target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                    </div>
+                  )
+                })
+                if (story.stories.length === 1){
+                  return (
+                    <div>
+                    <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                    {storiez}
+                    </div>
+                  )
+                } else {
+                  return (
+                    <div>
+                    <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                    {storiez}
+                    </div>
+                  )
+                }
+
+            } else {
+
+              if (story.stories.length === 1){
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  </div>
+                )
+              } else {
+                return (
+                  <div>
+                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  </div>
+                )
+              }
+
+            }
+            })
+           this.setState({ expandedStoryDiv: storyDiv })
+          })
+         })
+       }
+
+
+
+     }
 
   render() {
 
