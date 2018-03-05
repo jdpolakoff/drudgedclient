@@ -13,11 +13,9 @@
 }
 
 .contain {
-  max-height: 1005px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-around;
+  align-items: center;
 }
 
 .drudged {

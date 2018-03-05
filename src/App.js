@@ -28,7 +28,6 @@ class App extends Component {
     })
 
     this.setState ({ questionableSources: qb}, ()=> {
-      console.log(this.state.questionableSources)
 
       var conspiracy = ["21st Century Wire,369News,A Sheep No More,Abel Danger,Above Top Secret,ACN Latitudes,Activist Post,Alt-Market,AwdNews,Age of Autism,Alliance for Advanced Health,Alt Health Works,Alternative Media Television (AMTV),Alternative News Network,American Free Press,American Intelligence Media (Aim4Truth),American Intelligencer Report,Ancient Code,Ancient Origins,Anderson Institute,Anti News Network,Anonymous,Another Day in the Empire,Answers in Genesis,Asia-Pacific Research,Assassination Science,Australian National Review,Autism Speaks,Awareness Act,Behold Israel,Biologos Foundation,Blacklisted News,Catholic Online,Center for Security Policy,Charisma News,Christian Broadcasting Network (CBN),Christian Science,Christian Times Newspaper,ChristianToday.Info,Climate Etc,Climate Depot,Coast to Coast AM,Collectively Conscious,Collective-Evolution,Conscious Life News,Conspiracy Daily Update,Conspiracy Planet,Cosmic Intelligence Agency,Countdown to Zerotime,Counter Current News,Counter Propa,CounterPsyOps,Covert Geopolitics,CreationWiki,CS Globe,Curious Mind Magazine,Daily Occupation,Daily Star UK,David Icke,David Wolfe,Data Asylum,Disclose TV,Discovery Institute,Dr. Axe,Earthpulse Press,Earth We Are One (EWAO),Eco News,EcoWatch,Educate Inspire Change,Educate-Yourself,Eluxe Magazine,End Time Headlines,Enlightened Planet,Environmental Working Group (EWG),Escape all these Things,Every News Here,Evolution News and Views,Extraordinary News,FaithPanda,Family Survival Headlines,Fellowship of the Minds,Food Babe,Food Matters,Freedomain Radio,Freethought Project,Friends of Science,From the Trenches World Report,GeoEngineering Watch,Global Research,Global Skywatch,Godlike Productions,Got Questions,Government Slaves,Greenpeace,Gulag Bound,HAARP.net,Health Eternally,Health Impact News,Health Nut News,Health Sciences Institute,Healthy Vibes,Hello Christian,Henry Makow (savethemales.ca),Higgins News Network,HL12,Homeopathy Journal,Humans Are Free,iHealthtube,Illuminati News,Illuminati Watcher,I Love Native Americans,Independent Living News,Infinite Unknown,Infowars,Institute for Creation Research (IRC),Institute for Responsible Technology,Intellihub,Investement Watch Blog,Israel, Islam and End Times,JeffereyJaxen.com,Jesus is Savior,Jews News,Jones Report,Knowledge of Today,LaRouche PAC,Liberty Videos,LifeSpa,Live Action,Living Resistance,Living Whole,Lozier Institute,Media Fact Watch,Media Roots,Medicine News,Medusa Magazine,Mercola,Modern Alternative Mama,Morning Ledger,Murica Today,Natural Awakenings Magazine,Natural Cures,Natural Cures Not Medicine,Natural Health 365,Natural Medicine Team,Natural News,Natural Society,Naturally Savvy,Neon Nettle,New American News,Newsbud,NewsInsideOut.com,News Target,NoDisInfo,Now the End Begins,NutritionFacts.org,Our Health Guides,Pak Alert Press,People for the Ethical Treatment of Animals (PETA),Political Blind Spot,Popular Technology,Principia Scientific International,Prison Planet,Prophecy News Watch,Prophecy Today,Prop or Not,Rapture News Network,RealFarmacy,Real Jew News,Real News 24,Redoubt News,Reflection of Mind,Religion Mind,Rense,Revolution Radio,SaneVax,SCEPCOP (Debunking Skeptics),Science Factz,Science Vibe,Sign of the Times,Secrets of the Fed,Sheep Killers,Shoebat,Skeptiko,South Front,Space.News,Stillness in the Storm,Storm Clouds Gathering,StormFront,Sustainable Pulse,The Anti-Media,The Aware,The Common Sense Show,The Controversial Files,The Corbett Report,The Crusader Journal,The Daily Check,The Daily Conspiracy,The Daily Sheeple,The Earth Child,The European Union Times,The Event Chronicle,The Forbidden Knowledge,The Hearty Soul,The International Reporter,The Internet Post,The Last Great Stand,The Liberty Beacon,The Mind Unleashed,The Rundown Live,The Stream,The Trumpet,The Truth About Cancer,The Truth Seeker,The Waking Times,Thinking Mom’s Revolution,Thrive Movement,Topinfo Post,True Pundit,TruNews,Truth Broadcasting Network,Truth Channel Politics,Truth Theory,Twisted.News,Tyranny Rising,UK Column,Underground Health,USA Hitman,USAWatchdog.com,Vaccines.news,Vaccines Revealed,Veterans Today,Vigilant Citizen,Viral News Network,Voice of America TV (voiceofamericatv.com),Wake Up World,Watts Up with That,We Are Anonymous,We Are Change,Wellness Achiever,Whale.to,WhatDoesItMean,What Really Happened,Why Don’t You Try This,Wikispooks,World Truth TV,Your News Wire,Zero Hedge"]
 
@@ -38,8 +37,6 @@ class App extends Component {
         return source.split(' ').join('').toLowerCase()
       })
       this.setState({ conspiracySites: conspiracy }, ()=> {
-
-        console.log(this.state.conspiracySites)
 
         axios.get('https://drudged.herokuapp.com/api')
         .then((response)=> {
@@ -76,7 +73,6 @@ class App extends Component {
             } else {
               outlet['fontColor'] = 'black'
             }
-            console.log(outlet)
             stories.forEach((story)=>{
               if (story.cleanURL === outlet.outlet && outlet.fontColor === 'red') {
                 story['fontColor'] = outlet.fontColor
@@ -98,7 +94,6 @@ class App extends Component {
           }
           storyArray.sort(compare)
           this.setState({ stories: storyArray }, ()=> {
-            console.log(this.state.stories)
             var storyDiv = this.state.stories.map((story)=>{
               if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
                 return (
@@ -140,7 +135,6 @@ class App extends Component {
 
     if (this.state.openTabs.indexOf(clicked) === -1) {
       this.setState({ openTabs: [...this.state.openTabs, clicked] }, ()=> {
-        console.log(this.state.openTabs)
 
         this.setState({ compareText: [...this.state.compareText, clicked.split(':')[0]] }, ()=> {
 
@@ -220,7 +214,7 @@ class App extends Component {
          return item !== clicked
          })
        }, ()=> {
-         console.log(this.state.openTabs)
+
          this.setState({ compareText: this.state.openTabs.map((tab)=>{
            return tab.split(':')[0]
          }) }, ()=> {
