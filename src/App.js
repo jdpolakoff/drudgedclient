@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 import drudge from './images/drudge.png'
+import moment from 'moment'
+import tz from 'moment-timezone'
 
 class App extends Component {
   constructor(){
@@ -12,13 +14,19 @@ class App extends Component {
       questionableSources: [],
       conspiracySites: [],
       openTabs: [],
-      compareText: []
+      compareText: [],
+      loadTime: '',
+      tz: ''
     }
   }
 
 
 
   componentDidMount(){
+    var date = moment(Date.now())
+    this.setState({ loadTime: date.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('MMMM Do YYYY, h:mm:ss a') })
+    this.setState({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })
+
     var qb = ["10News.one,100 Percent Fed Up,247 News Media,70 News,AbcNews.com.co,Age of Shitlords,Alabama Observer,Allen West Republic,Alliance Defending Freedom,All News Pipeline,Alternative Media Syndicate,Amazingnews.net,American College of Pediatricians,American Fans,American Patriot Daily,American Family Association,American Flavor,American Freedom Fighters,American Journal Review,American Lookout,American News,American People Network,American Prides,American Principles Project,American Renaissance,American Society for the Defense of Tradition, Family and Property (TFP),American Today,American Truth Seekers,American Updater,Americans Against the Tea Party (AATTP),anews-24 (American News),Aurora-News,A Voice for Men,Banned Information,Bare Naked Islam,BB4SP,BeAware,Before It’s News,Big Blue Vision,Bipartisan Report,Black Genocide,Black Pigeon Speaks,Blue Informer,Blue Tribune,Bluevision.news,Blue Vision Post,Blunt Force Truth,Borderland Alternative Media (BAM),Breaking911,Breakingtop.world,Britain First,CbsNews.com.co,Censored.News,Center for Immigration Studies (CIS),Cerno (Cernovich.com),Christian Action Network,CityWorldNews,Clarion Project,Clash Daily,Cnn.com.de,cnn-globalnews.com,Concerned Women for America,Conservative Army,Conservative Byte,Conservative Daily Post,Conservative Fighters,Conservative Firing Line,Conservative Free Press,Conservative Info Corner,Conservative Media,Conservative Movement,Conservative Nation,Conservative News Flash,Conservapedia,Conservative 101,Conservative Patriot,Conservative Politicus,Conservative Post,Conservative Spirit,Conservative Tribune,Constitution Rising,Council of Conservative Citizens,Daily Buzz Live,Daily Headlines,Daily Infobox,Daily Insider News,Daily Notify,Daily Presser,Daily Stormer,Daily USA Update,Daily World Information,Dam-Reports,Danger and Play,David Horowitz Freedom Center,DEBKAfile,Defend Europa,Defiant America,Defund.com,Democratic Moms,Democratic Review,Denver Guardian,Departed (Maganews.com),Deplorable Movement 2020,DC Gazette,Discover the Networks,Donald Trump News,Donald Trump Potus 45,Downtrend,Draining the Swamp,Eagle Rising,Earth News-Conservative News,Embols,Empire Herald,Ending the Fed News,ENH Live,En Volve,Exposing Government,Family Research Council,Fars News,Federalist Nation,Federalist Tribune,Flash News Corner,Florida Sun-Post,Focus on the Family,France24-TV.com,Freakout Nation,Free Patriot Post,Free Rein Report,Freedom Daily,Freedom Liberty News,Freedom Outpost,Freedom’s Final Stand,Fresh News – USA,Frontpage Magazine,Fury News,FWD Now,Geller Report,Girls Just Wanna Have Guns,Global Info Today,Global Politics Now,Globe Magazine (Tabloid),Gone Left,GoodGopher,GOP Watchdog,GotNews,Hang the Bankers,Hawar News Agency,If You Only News,I have the Truth,I, Hypocrite,I Love My Freedom,IMOwired,iTag Live,InfoGalactic,Information Liberation,Informed Owners,Israel Video Network,Jew Watch,Jihad Watch,Joe for America,Jookos News,Just the Facts,Knights Templar International,Lady Liberty News,Learn Progress,Lew Rockwell,Liberal Plug,Liberal Society,Liberal Speak,Liberty Brief,Liberty Courier,Liberty is Viral,Liberty Writers News,London Web News,LoonWatch,Loser.com,Mad American Network,Mad World News,MagaPill,MartinLutherKing.org,MBGA – Make Britain Great Again,Media Zone,Metapedia,MILO News (Milo Yiannopoulos),Molon Labe Media,Moving Left,Mr. Conservative (MRC),My Right American,MyZoneToday,Nation45,National Alliance,National Economic Editorial,National Enquirer,National Policy Institute,National Vanguard,Native Americans,Native American News,NBC.com.co,NeverRepublican.com,Nevo News,New Century Times,News and Stories from USA,News Conservative,New Nation News,New Politics Today,News Blaze,NewsBreaksHere,NewsExaminer.net,News Chicken,News Feed Hunter,News Up Today,NewsWars,News With Views,NMWS.us,Nos Comunicamos,Oath Keepers,Occupy Democrats,Online Conservative Press,Open Magazines,Opposition Report,Our Eye on Islam,Overpasses for America,Pacific Pundit,Patriot Beacon,Patribotics Blog,Patriot Fires,Patriot Hangout,Patriot Update,Patriotic Viral News,Patriots Voice,Personal Liberty,Plymouth Patriot Post,PM Nightly News,Police Times,Political Ears,Political Inbox,Political Mayhem News,Political Site News,Politico Info,Politics Live,Politifact News,Powdered Wig Society,President 45 Donald Trump,Prideof-America.org (American News),Prntly,Pro-America News,Progress Tribune,Progressives Today,Project Purge,Proud Conservative,Proud Leader,Proud Patriots,Puppet String News,QPolitical,React 365,Read Conservatives,Reagan Coalition,Real Time Politics,Red Country,Red Ice TV,Red Info,Red People,Red Politics,Red Rock Daily News,Red Rock Tribune,Red State Journalist,Red State Pundit,Red, White and Right,Renew America,Resistance Report,Return of Kings,Right Alerts,Right Journalist,Right Smarts,Right Wing News,RINF,Shared News Report,SHTFplan.com,Smoloko,South Africa Today,SpeakGov.com,South Jersey Mechanic (Trump News),Speisa,Spinzon,Squawker,Stares at the World,State Fort Daily,State of the Nation 2012,Steadfast and Loyal,Stone Cold Truth,Subject Politics,Sunday Inquirer,Supreme Patriot,Sure News,Syria News,Taki’s Magazine,TashNews,Tea Party Inc.,TD Newswire,TdtAlliance.com,Teddy Stick,Tell Me Now,TheBreakingNews,The American Mirror,The Angry Patriot,The Boston Tribune,The Constitution,The D.C. Clothesline,The Daily Bell,The Deplorables,The Duran,The Federalist Papers Project,The Federation for American Immigration Reform,The Free Patriot,The Free Telegraph,The Gateway Pundit,The Goldwater,The Horn News,The Liberty Eagle,The National Patriot,The National Pulse,The New Observer,The News Guru,The New York Evening,The Peoples Truth,The Political Tribune,The Premium News,The Proud Liberal,The Religion of Peace,The Remnant Magazine,The Rightists,The Right Stuff,The Sons of Liberty (Bradlee Dean),The Trump Media,The Truth Division,The Unz Review,The US Patriot,The USA Conservative,The Washington Feed,The Washington Standard,Times of America,Today Dispatch,Top Right News,Truth and Action,True Activist,True Blue Scoop,True Trumpers,Trumpservative News,Truth Examiner,TruthFeed,Truth In Media,Truth Monitor,Truth Revolt,Truth Uncensored,Uncle Sam’s Misguided Children,Underground Journalist,Understanding the Threat,Unique Web Magazine,Universe Politics,US Advisor,U.S. Chronicle,U.S. Herald,US Info News,US Journal Review,US Postman,USA Conservative Report,USA Daily Post,USA Daily Review,USA Daily Time,USA Dose News,USAFirstInfo,USA in Front,USA Newsflash,USA News for You,USA News/Politics USA News,USA News/States-TV,USANewsToday,USA Politics Now,USA Public Life,USA Supreme,USA Television,USA Viral News Today,USA World Box,Vanguard America,Vatican Radio,VDARE,Vidmax,Viral Liberty,Viral Patriot,Walk With Her,Web Daily,We Conservative,Western Sentinel,WikiIslam,Winning Democrats,Witherspoon Institute,World News Politics,WorldPolitics News,World Politicus,Yes, I’m Right,ZootFeed.com"]
 
     var qb = qb.join(' ').split(',')
@@ -145,7 +153,7 @@ class App extends Component {
                 var storiez = story.stories.map((story)=>{
                     return (
                       <div className="linkContain">
-                      <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                      <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p className="linkText"> {story.linkText}</p></a>
                       </div>
                     )
                   })
@@ -168,7 +176,7 @@ class App extends Component {
                 var storiez = story.stories.map((story)=>{
                     return (
                       <div className="linkContain">
-                      <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                      <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p className="linkText"> {story.linkText}</p></a>
                       </div>
                     )
                   })
@@ -242,7 +250,7 @@ class App extends Component {
               var storiez = story.stories.map((story)=>{
                   return (
                     <div className="linkContain">
-                    <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p>{story.linkText}</p></a>
+                    <a className="drudged" style={{color: story.fontColor}}  target="_blank" href={story.linkHref}><p className="linkText"> {story.linkText}</p></a>
                     </div>
                   )
                 })
@@ -301,6 +309,7 @@ class App extends Component {
         <div className="imgContain">
         <h1 className="drudgedReport">THE DRUDGED REPORT</h1>
         </div>
+          <p className="time">Updated: {this.state.loadTime} {this.state.tz} time</p>
           {this.state.showStories ? <div className="contain">{this.state.expandedStoryDiv}</div> : <div className="contain">{this.state.storyDiv}</div>}
       </div>
     );
