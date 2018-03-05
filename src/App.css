@@ -28,19 +28,6 @@
   text-decoration: underline;
 }
 
-.crossedOut {
-  color: red;
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: bold;
-  font-style: italic;
-  text-decoration: underline;
-}
-
-.crossedOut:hover {
-  cursor: pointer
-}
-
 .disclaimer {
   color: red;
   font-family: monospace;
@@ -94,6 +81,7 @@
     align-items: center
   }
   .drudgedReport {
-    font-size: 70px
+    font-size: 70px;
+    text-shadow: -5px 0px #BFBFBF;
   }
 }
