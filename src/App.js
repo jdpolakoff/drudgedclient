@@ -29,97 +29,105 @@ class App extends Component {
 
     this.setState ({ questionableSources: qb}, ()=> {
       console.log(this.state.questionableSources)
-    })
 
-    var conspiracy = ["21st Century Wire,369News,A Sheep No More,Abel Danger,Above Top Secret,ACN Latitudes,Activist Post,Alt-Market,AwdNews,Age of Autism,Alliance for Advanced Health,Alt Health Works,Alternative Media Television (AMTV),Alternative News Network,American Free Press,American Intelligence Media (Aim4Truth),American Intelligencer Report,Ancient Code,Ancient Origins,Anderson Institute,Anti News Network,Anonymous,Another Day in the Empire,Answers in Genesis,Asia-Pacific Research,Assassination Science,Australian National Review,Autism Speaks,Awareness Act,Behold Israel,Biologos Foundation,Blacklisted News,Catholic Online,Center for Security Policy,Charisma News,Christian Broadcasting Network (CBN),Christian Science,Christian Times Newspaper,ChristianToday.Info,Climate Etc,Climate Depot,Coast to Coast AM,Collectively Conscious,Collective-Evolution,Conscious Life News,Conspiracy Daily Update,Conspiracy Planet,Cosmic Intelligence Agency,Countdown to Zerotime,Counter Current News,Counter Propa,CounterPsyOps,Covert Geopolitics,CreationWiki,CS Globe,Curious Mind Magazine,Daily Occupation,Daily Star UK,David Icke,David Wolfe,Data Asylum,Disclose TV,Discovery Institute,Dr. Axe,Earthpulse Press,Earth We Are One (EWAO),Eco News,EcoWatch,Educate Inspire Change,Educate-Yourself,Eluxe Magazine,End Time Headlines,Enlightened Planet,Environmental Working Group (EWG),Escape all these Things,Every News Here,Evolution News and Views,Extraordinary News,FaithPanda,Family Survival Headlines,Fellowship of the Minds,Food Babe,Food Matters,Freedomain Radio,Freethought Project,Friends of Science,From the Trenches World Report,GeoEngineering Watch,Global Research,Global Skywatch,Godlike Productions,Got Questions,Government Slaves,Greenpeace,Gulag Bound,HAARP.net,Health Eternally,Health Impact News,Health Nut News,Health Sciences Institute,Healthy Vibes,Hello Christian,Henry Makow (savethemales.ca),Higgins News Network,HL12,Homeopathy Journal,Humans Are Free,iHealthtube,Illuminati News,Illuminati Watcher,I Love Native Americans,Independent Living News,Infinite Unknown,Infowars,Institute for Creation Research (IRC),Institute for Responsible Technology,Intellihub,Investement Watch Blog,Israel, Islam and End Times,JeffereyJaxen.com,Jesus is Savior,Jews News,Jones Report,Knowledge of Today,LaRouche PAC,Liberty Videos,LifeSpa,Live Action,Living Resistance,Living Whole,Lozier Institute,Media Fact Watch,Media Roots,Medicine News,Medusa Magazine,Mercola,Modern Alternative Mama,Morning Ledger,Murica Today,Natural Awakenings Magazine,Natural Cures,Natural Cures Not Medicine,Natural Health 365,Natural Medicine Team,Natural News,Natural Society,Naturally Savvy,Neon Nettle,New American News,Newsbud,NewsInsideOut.com,News Target,NoDisInfo,Now the End Begins,NutritionFacts.org,Our Health Guides,Pak Alert Press,People for the Ethical Treatment of Animals (PETA),Political Blind Spot,Popular Technology,Principia Scientific International,Prison Planet,Prophecy News Watch,Prophecy Today,Prop or Not,Rapture News Network,RealFarmacy,Real Jew News,Real News 24,Redoubt News,Reflection of Mind,Religion Mind,Rense,Revolution Radio,SaneVax,SCEPCOP (Debunking Skeptics),Science Factz,Science Vibe,Sign of the Times,Secrets of the Fed,Sheep Killers,Shoebat,Skeptiko,South Front,Space.News,Stillness in the Storm,Storm Clouds Gathering,StormFront,Sustainable Pulse,The Anti-Media,The Aware,The Common Sense Show,The Controversial Files,The Corbett Report,The Crusader Journal,The Daily Check,The Daily Conspiracy,The Daily Sheeple,The Earth Child,The European Union Times,The Event Chronicle,The Forbidden Knowledge,The Hearty Soul,The International Reporter,The Internet Post,The Last Great Stand,The Liberty Beacon,The Mind Unleashed,The Rundown Live,The Stream,The Trumpet,The Truth About Cancer,The Truth Seeker,The Waking Times,Thinking Mom’s Revolution,Thrive Movement,Topinfo Post,True Pundit,TruNews,Truth Broadcasting Network,Truth Channel Politics,Truth Theory,Twisted.News,Tyranny Rising,UK Column,Underground Health,USA Hitman,USAWatchdog.com,Vaccines.news,Vaccines Revealed,Veterans Today,Vigilant Citizen,Viral News Network,Voice of America TV (voiceofamericatv.com),Wake Up World,Watts Up with That,We Are Anonymous,We Are Change,Wellness Achiever,Whale.to,WhatDoesItMean,What Really Happened,Why Don’t You Try This,Wikispooks,World Truth TV,Your News Wire,Zero Hedge"]
+      var conspiracy = ["21st Century Wire,369News,A Sheep No More,Abel Danger,Above Top Secret,ACN Latitudes,Activist Post,Alt-Market,AwdNews,Age of Autism,Alliance for Advanced Health,Alt Health Works,Alternative Media Television (AMTV),Alternative News Network,American Free Press,American Intelligence Media (Aim4Truth),American Intelligencer Report,Ancient Code,Ancient Origins,Anderson Institute,Anti News Network,Anonymous,Another Day in the Empire,Answers in Genesis,Asia-Pacific Research,Assassination Science,Australian National Review,Autism Speaks,Awareness Act,Behold Israel,Biologos Foundation,Blacklisted News,Catholic Online,Center for Security Policy,Charisma News,Christian Broadcasting Network (CBN),Christian Science,Christian Times Newspaper,ChristianToday.Info,Climate Etc,Climate Depot,Coast to Coast AM,Collectively Conscious,Collective-Evolution,Conscious Life News,Conspiracy Daily Update,Conspiracy Planet,Cosmic Intelligence Agency,Countdown to Zerotime,Counter Current News,Counter Propa,CounterPsyOps,Covert Geopolitics,CreationWiki,CS Globe,Curious Mind Magazine,Daily Occupation,Daily Star UK,David Icke,David Wolfe,Data Asylum,Disclose TV,Discovery Institute,Dr. Axe,Earthpulse Press,Earth We Are One (EWAO),Eco News,EcoWatch,Educate Inspire Change,Educate-Yourself,Eluxe Magazine,End Time Headlines,Enlightened Planet,Environmental Working Group (EWG),Escape all these Things,Every News Here,Evolution News and Views,Extraordinary News,FaithPanda,Family Survival Headlines,Fellowship of the Minds,Food Babe,Food Matters,Freedomain Radio,Freethought Project,Friends of Science,From the Trenches World Report,GeoEngineering Watch,Global Research,Global Skywatch,Godlike Productions,Got Questions,Government Slaves,Greenpeace,Gulag Bound,HAARP.net,Health Eternally,Health Impact News,Health Nut News,Health Sciences Institute,Healthy Vibes,Hello Christian,Henry Makow (savethemales.ca),Higgins News Network,HL12,Homeopathy Journal,Humans Are Free,iHealthtube,Illuminati News,Illuminati Watcher,I Love Native Americans,Independent Living News,Infinite Unknown,Infowars,Institute for Creation Research (IRC),Institute for Responsible Technology,Intellihub,Investement Watch Blog,Israel, Islam and End Times,JeffereyJaxen.com,Jesus is Savior,Jews News,Jones Report,Knowledge of Today,LaRouche PAC,Liberty Videos,LifeSpa,Live Action,Living Resistance,Living Whole,Lozier Institute,Media Fact Watch,Media Roots,Medicine News,Medusa Magazine,Mercola,Modern Alternative Mama,Morning Ledger,Murica Today,Natural Awakenings Magazine,Natural Cures,Natural Cures Not Medicine,Natural Health 365,Natural Medicine Team,Natural News,Natural Society,Naturally Savvy,Neon Nettle,New American News,Newsbud,NewsInsideOut.com,News Target,NoDisInfo,Now the End Begins,NutritionFacts.org,Our Health Guides,Pak Alert Press,People for the Ethical Treatment of Animals (PETA),Political Blind Spot,Popular Technology,Principia Scientific International,Prison Planet,Prophecy News Watch,Prophecy Today,Prop or Not,Rapture News Network,RealFarmacy,Real Jew News,Real News 24,Redoubt News,Reflection of Mind,Religion Mind,Rense,Revolution Radio,SaneVax,SCEPCOP (Debunking Skeptics),Science Factz,Science Vibe,Sign of the Times,Secrets of the Fed,Sheep Killers,Shoebat,Skeptiko,South Front,Space.News,Stillness in the Storm,Storm Clouds Gathering,StormFront,Sustainable Pulse,The Anti-Media,The Aware,The Common Sense Show,The Controversial Files,The Corbett Report,The Crusader Journal,The Daily Check,The Daily Conspiracy,The Daily Sheeple,The Earth Child,The European Union Times,The Event Chronicle,The Forbidden Knowledge,The Hearty Soul,The International Reporter,The Internet Post,The Last Great Stand,The Liberty Beacon,The Mind Unleashed,The Rundown Live,The Stream,The Trumpet,The Truth About Cancer,The Truth Seeker,The Waking Times,Thinking Mom’s Revolution,Thrive Movement,Topinfo Post,True Pundit,TruNews,Truth Broadcasting Network,Truth Channel Politics,Truth Theory,Twisted.News,Tyranny Rising,UK Column,Underground Health,USA Hitman,USAWatchdog.com,Vaccines.news,Vaccines Revealed,Veterans Today,Vigilant Citizen,Viral News Network,Voice of America TV (voiceofamericatv.com),Wake Up World,Watts Up with That,We Are Anonymous,We Are Change,Wellness Achiever,Whale.to,WhatDoesItMean,What Really Happened,Why Don’t You Try This,Wikispooks,World Truth TV,Your News Wire,Zero Hedge"]
 
-    var conspiracy = conspiracy.join(' ').split(',')
+      var conspiracy = conspiracy.join(' ').split(',')
 
-    conspiracy = conspiracy.map((source)=>{
-      return source.split(' ').join('').toLowerCase()
-    })
-    this.setState({ conspiracySites: conspiracy })
+      conspiracy = conspiracy.map((source)=>{
+        return source.split(' ').join('').toLowerCase()
+      })
+      this.setState({ conspiracySites: conspiracy }, ()=> {
 
-    axios.get('https://drudged.herokuapp.com/api')
-      .then((response)=> {
-        var stories = response.data
-        var storyArray = []
-        stories.forEach((story)=>{
-          if (story.linkHref.includes('http://www.')){
-            var cleanURL = story.linkHref.replace('http://www.', '').split('/')[0]
-          } else if (story.linkHref.includes('https://www.')){
-            var cleanURL = story.linkHref.replace('https://www.', '').split('/')[0]
-          } else if (story.linkHref.includes('http://')){
-            var cleanURL = story.linkHref.replace('http://', '').split('/')[0]
-          } else if (story.linkHref.includes('https://')){
-            var cleanURL = story.linkHref.replace('https://', '').split('/')[0]
-          } else {
-            return
-          }
-          story['cleanURL'] = cleanURL
-          story['count'] = 1
-          storyArray.push(story.cleanURL)
-        })
-        storyArray = storyArray.filter((outlet, index, storyArray)=>{
-          return storyArray.indexOf(outlet) == index
-        })
-        storyArray = storyArray.map((outlet)=>{
-          return outlet = {
-            outlet: outlet,
-            stories: [],
-            compareURL: outlet.split('.')[0]
-          }
-        })
-        storyArray.forEach((outlet)=>{
+        console.log(this.state.conspiracySites)
+
+        axios.get('https://drudged.herokuapp.com/api')
+        .then((response)=> {
+          var stories = response.data
+          var storyArray = []
           stories.forEach((story)=>{
+            if (story.linkHref.includes('http://www.')){
+              var cleanURL = story.linkHref.replace('http://www.', '').split('/')[0]
+            } else if (story.linkHref.includes('https://www.')){
+              var cleanURL = story.linkHref.replace('https://www.', '').split('/')[0]
+            } else if (story.linkHref.includes('http://')){
+              var cleanURL = story.linkHref.replace('http://', '').split('/')[0]
+            } else if (story.linkHref.includes('https://')){
+              var cleanURL = story.linkHref.replace('https://', '').split('/')[0]
+            } else {
+              return
+            }
+            story['cleanURL'] = cleanURL
+            storyArray.push(story.cleanURL)
+          })
+          storyArray = storyArray.filter((outlet, index, storyArray)=>{
+            return storyArray.indexOf(outlet) == index
+          })
+          storyArray = storyArray.map((outlet)=>{
+            return outlet = {
+              outlet: outlet,
+              stories: [],
+              compareURL: outlet.split('.')[0]
+            }
+          })
+          storyArray.forEach((outlet)=>{
+            if (this.state.conspiracySites.indexOf(outlet.compareURL) !== -1 || this.state.questionableSources.indexOf(outlet.compareURL) !== -1) {
+              outlet['fontColor'] = 'red'
+            } else {
+              outlet['fontColor'] = 'black'
+            }
+            console.log(outlet)
+            stories.forEach((story)=>{
               if (story.cleanURL === outlet.outlet) {
                 outlet.stories.push(story)
               }
+            })
           })
-        })
-        function compare(a, b){
-          if (a.stories.length > b.stories.length){
-            return -1
+          function compare(a, b){
+            if (a.stories.length > b.stories.length){
+              return -1
+            }
+            if (a.stories.length < b.stories.length){
+              return 1
+            }
+            return 0
           }
-          if (a.stories.length < b.stories.length){
-            return 1
-          }
-          return 0
-        }
-        storyArray.sort(compare)
-        this.setState({ stories: storyArray }, ()=> {
-          console.log(this.state.stories)
-          var storyDiv = this.state.stories.map((story)=>{
+          storyArray.sort(compare)
+          this.setState({ stories: storyArray }, ()=> {
+            console.log(this.state.stories)
+            var storyDiv = this.state.stories.map((story)=>{
               if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1) {
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) === -1 && this.state.questionableSources.indexOf(story.compareURL) === -1){
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length === 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1) {
                 return (
                   <div>
-                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else if (story.stories.length > 1 && this.state.conspiracySites.indexOf(story.compareURL) !== -1 || this.state.questionableSources.indexOf(story.compareURL) !== -1){
                 return (
                   <div>
-                  <p onClick={this.showStories} className="crossedOut">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               }
+            })
+            this.setState({ storyDiv: storyDiv })
           })
-          this.setState({ storyDiv: storyDiv })
         })
       })
-    }
+    })
+  }
 
 
   showStories = (e) => {
@@ -146,14 +154,14 @@ class App extends Component {
                   if (story.stories.length === 1){
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       {storiez}
                       </div>
                     )
                   } else {
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       {storiez}
                       </div>
                     )
@@ -169,14 +177,14 @@ class App extends Component {
                   if (story.stories.length === 1){
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       {storiez}
                       </div>
                     )
                   } else {
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       {storiez}
                       </div>
                     )
@@ -185,13 +193,13 @@ class App extends Component {
                   if (story.stories.length === 1){
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                       </div>
                     )
                   } else {
                     return (
                       <div>
-                      <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                      <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                       </div>
                     )
                   }
@@ -220,13 +228,13 @@ class App extends Component {
               if (story.stories.length === 1){
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else {
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               }
@@ -243,14 +251,14 @@ class App extends Component {
                 if (story.stories.length === 1){
                   return (
                     <div>
-                    <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                    <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                     {storiez}
                     </div>
                   )
                 } else {
                   return (
                     <div>
-                    <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                    <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                     {storiez}
                     </div>
                   )
@@ -261,13 +269,13 @@ class App extends Component {
               if (story.stories.length === 1){
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} story on Drudge</p>
                   </div>
                 )
               } else {
                 return (
                   <div>
-                  <p onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
+                  <p style={{color: story.fontColor}}onClick={this.showStories} className="drudged">{story.outlet}: {story.stories.length} stories on Drudge</p>
                   </div>
                 )
               }
