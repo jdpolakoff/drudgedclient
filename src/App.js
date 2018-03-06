@@ -24,6 +24,16 @@ class App extends Component {
 
 
   componentDidMount(){
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:804589,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+
     var date = moment(Date.now())
     this.setState({ loadTime: date.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('MMMM Do YYYY, h:mm:ss a') })
     this.setState({ tz: Intl.DateTimeFormat().resolvedOptions().timeZone })
