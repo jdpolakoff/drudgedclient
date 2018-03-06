@@ -14,10 +14,9 @@
 
 .contain {
   display: flex;
-  flex-direction: column;
-  align-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
-  max-height: 1200px
 }
 
 .drudged {
@@ -146,5 +145,8 @@
   .linkContain {
     margin: 0 auto;
     text-align: center
+  }
+  .contain {
+    flex-direction: column
   }
 }
