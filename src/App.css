@@ -13,11 +13,11 @@
 }
 
 .contain {
-  max-height: 1200px;
   display: flex;
   flex-direction: column;
   align-content: space-around;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  max-height: 1200px
 }
 
 .drudged {
@@ -98,7 +98,13 @@
   padding-right: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
-  width: 400px;
+  width: 400px
+}
+
+.spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center
 }
 
 .imgContain {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 import drudge from './images/drudge.png'
+import spinner from './images/spinner.gif'
 import moment from 'moment'
 import tz from 'moment-timezone'
 
@@ -311,6 +312,8 @@ class App extends Component {
         <h1 className="drudgedReport">THE DRUDGED REPORT</h1>
         </div>
           <p className="time">Updated: {this.state.loadTime} {this.state.tz} time</p>
+          {!this.state.storyDiv && !this.state.expandedStoryDiv &&
+          <div className="spinner"><img src={spinner} /></div>}
           {this.state.showStories ? <div className="contain">{this.state.expandedStoryDiv}</div> : <div className="contain">{this.state.storyDiv}</div>}
       </div>
     );
