@@ -59,8 +59,6 @@
 
 .linkContain {
   max-width: 350px;
-  margin: 0 auto;
-  text-align: center
 }
 
 .drudgeLink {
@@ -143,6 +141,10 @@
     text-shadow: -5px 0px #BFBFBF;
   }
   .drudged, .drudged a, .drudged p {
+    text-align: center
+  }
+  .linkContain {
+    margin: 0 auto;
     text-align: center
   }
 }
