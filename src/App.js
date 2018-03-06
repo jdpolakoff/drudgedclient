@@ -312,6 +312,7 @@ class App extends Component {
         <h1 className="drudgedReport">THE DRUDGED REPORT</h1>
         </div>
           <p className="time">Updated: {this.state.loadTime} {this.state.tz} time</p>
+          <p className="click">Click to expand stories</p>
           {!this.state.storyDiv && !this.state.expandedStoryDiv &&
           <div className="spinner"><img src={spinner} /></div>}
           {this.state.showStories ? <div className="contain">{this.state.expandedStoryDiv}</div> : <div className="contain">{this.state.storyDiv}</div>}
