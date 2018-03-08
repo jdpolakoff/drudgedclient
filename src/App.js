@@ -17,7 +17,8 @@ class App extends Component {
       openTabs: [],
       compareText: [],
       loadTime: '',
-      tz: ''
+      tz: '',
+      badStories: 0
     }
   }
 
@@ -89,6 +90,7 @@ class App extends Component {
           storyArray.forEach((outlet)=>{
             if (this.state.conspiracySites.indexOf(outlet.compareURL) !== -1 || this.state.questionableSources.indexOf(outlet.compareURL) !== -1) {
               outlet['fontColor'] = 'red'
+              this.setState({ badStories: this.state.badStories + 1 })
             } else {
               outlet['fontColor'] = 'black'
             }
@@ -317,7 +319,9 @@ class App extends Component {
         <p className="questionMark">?</p>
         </div>
         <h1 className="headline">{"WHO'S ON DRUDGE?"}</h1>
-        <p className="disclaimer">* Stories in red font are from sources deemed "questionable" or "conspiracy-psuedoscience" by <a className="disclaimer" href="https://mediabiasfactcheck.com/">Media Bias/Fact Check</a></p>
+        {this.state.badStories > 0 &&
+          <p className="disclaimer">* Stories in red font are from sources deemed "questionable" or "conspiracy-psuedoscience" by <a className="disclaimer" href="https://mediabiasfactcheck.com/">Media Bias/Fact Check</a></p>
+        }
         <div className="imgContain">
         <h1 className="drudgedReport">THE DRUDGED REPORT</h1>
         </div>
